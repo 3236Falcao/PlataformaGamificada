@@ -12,11 +12,13 @@
 
 Este projeto tem como objetivo desenvolver uma plataforma gamificada de aprendizagem, visando tornar o processo educacional mais envolvente e motivador por meio da aplicação de elementos de jogos em contextos educacionais. A meta é aumentar a retenção do conhecimento e a participação ativa dos usuários através de um sistema de recompensas e desafios.
 
-### Público-Alvo
+<h4 align="center"> 
+	Público-Alvo
+</h4>
 
 A plataforma é direcionada a estudantes e profissionais que buscam uma abordagem mais interativa e divertida para aprender novos conceitos e habilidades.
 
-### Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 ### React
 
@@ -30,7 +32,7 @@ O TypeScript, um superset do JavaScript, é empregado para adicionar tipagem est
 
 Node.js é utilizado para o backend, oferecendo um ambiente de execução eficiente e escalável para o servidor da plataforma.
 
-### Técnicas de Gamificação
+# Técnicas de Gamificação
 
 ### Sistema de Pontuação
 
