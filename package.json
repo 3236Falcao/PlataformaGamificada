@@ -1,0 +1,16 @@
+{
+  "name": "plataformagamificada",
+  "version": "1.0.0",
+  "description": "![Banner](https://user-images.githubusercontent.com/69947504/141135355-13a535b0-17be-45e3-828d-c790b150fb21.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
