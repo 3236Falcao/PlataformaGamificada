@@ -44,7 +44,7 @@ Os usuários recebem emblemas e conquistas por atingir certos marcos ou completa
 
 ### Progressão e Níveis
 
-Implementamos um sistema de progressão, onde os usuários avançam em níveis à medida que acumulam pontos, simbolizando seu avanço no aprendizado.
+Através de um sistema de progressão os usuários avançam em níveis à medida que acumulam pontos, simbolizando seu avanço no aprendizado.
 
 <h4 align="center"> 
 	 Conclusão
@@ -67,5 +67,13 @@ Atualmente, estamos em processo de integração com um banco de dados para armaz
 - Consulta de pessoa
 - Atualiza registros
 - Apaga registros
+- Painel de Controle 
+- Atribuição Automática de Pontos
+- Histórico de Pontuação
+- Galeria de Conquistas e Emblemas
+- Barra de Progresso de Nível
+- Desafios Semanais
+- Lista de classificação
+- Canal de Suporte
 
 
