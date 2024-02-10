@@ -1,7 +1,6 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import { connectToMongoDB } from '../config/db';
+import express, { Request, Response } from 'express';
 import Usuario from '../models/usuarioModel';
+import { connectToMongoDB } from '../config/db';
 
 const app = express();
 const PORT = 3000;
@@ -9,23 +8,29 @@ const PORT = 3000;
 // Middleware para analisar JSON
 app.use(express.json());
 
+// Conecta ao MongoDB usando a função de conexão
+connectToMongoDB().then(() => {
+  console.log('Conectado ao MongoDB');
+}).catch((err) => {
+  console.error('Erro ao conectar ao MongoDB:', err);
+  process.exit(1); // Encerra o processo se houver erro de conexão
+});
+
 // Rota para criar um novo usuário
-app.post('/usuarios', async (req, res) => {
+app.post('/usuarios', async (req: Request, res: Response) => {
   try {
-    // Conecta ao MongoDB
-    const client = await connectToMongoDB();
+    const { nome, idade } = req.body;
+
+    // Validar entrada
+    if (!nome || !idade) {
+      return res.status(400).json({ message: 'Nome e idade são obrigatórios' });
+    }
 
     // Cria um novo usuário usando o modelo
-    const novoUsuario = new Usuario({
-      nome: req.body.nome,
-      idade: req.body.idade,
-    });
+    const novoUsuario = new Usuario({ nome, idade });
 
     // Salva o usuário no banco de dados
     await novoUsuario.save();
-
-    // Fecha a conexão
-    client.close();
 
     // Responde com o novo usuário
     res.json(novoUsuario);
@@ -36,16 +41,10 @@ app.post('/usuarios', async (req, res) => {
 });
 
 // Rota para obter todos os usuários
-app.get('/usuarios', async (req, res) => {
+app.get('/usuarios', async (req: Request, res: Response) => {
   try {
-    // Conecta ao MongoDB
-    const client = await connectToMongoDB();
-
-    // Obtém todos os usuários usando o modelo
+    // Obtém todos os usuários da coleção de usuários
     const usuarios = await Usuario.find();
-
-    // Fecha a conexão
-    client.close();
 
     // Responde com a lista de usuários
     res.json(usuarios);

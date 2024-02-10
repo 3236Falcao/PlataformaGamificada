@@ -1,13 +1,16 @@
-import mongoose from 'mongoose';
 import Usuario from '../models/usuarioModel';
 
+import mongoose from 'mongoose';
+
+
 const uri = 'mongodb+srv://<adm>:<LiQ4-ZvW3fWMeh2>@plataformagamificada.qexl0pq.mongodb.net/?retryWrites=true&w=majority';
+
+//const mongoose = require('mongoose');
 
 async function run() {
   try {
     // Conectar ao MongoDB
     await mongoose.connect(uri, {
-      useNewUrlParser: true,
       useUnifiedTopology: true,
     } as mongoose.ConnectOptions);
 
