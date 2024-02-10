@@ -12,28 +12,20 @@ async function run() {
     // Conectar ao MongoDB
     await mongoose.connect(uri, {
       useUnifiedTopology: true,
-    } as mongoose.ConnectOptions);
+    };
 
-    // Criar um novo usuário
-    const novoUsuario = new Usuario({ nome: 'John Doe', idade: 25 });
-    const usuarioCriado = await novoUsuario.save();
-    console.log('Novo usuário criado:', usuarioCriado);
+    // Conectar ao MongoDB usando a URI do servidor de memória
+    await mongoose.connect(mongoUri, mongooseOptions);
 
-    // Ler todos os usuários
-    const usuarios = await Usuario.find();
-    console.log('Todos os usuários:', usuarios);
+    // Restante do código...
 
-    // Atualizar um usuário
-    const resultadoAtualizacao = await Usuario.updateOne({ nome: 'John Doe' }, { idade: 26 });
-    console.log('Usuário atualizado:', resultadoAtualizacao);
-
-    // Excluir um usuário
-    const resultadoExclusao = await Usuario.deleteOne({ nome: 'John Doe' });
-    console.log('Usuário excluído:', resultadoExclusao);
   } catch (erro) {
     console.error('Erro durante as operações CRUD:', erro);
   } finally {
-    // Fechar a conexão após as operações
+    // Parar o servidor de memória do MongoDB e fechar a conexão após as operações
+    if (mongoServer) {
+      await mongoServer.stop();
+    }
     mongoose.disconnect();
   }
 }
