@@ -47,7 +47,11 @@ O backend da Plataforma Gamificada de Aprendizagem é crucial para fornecer os s
 	🚧   🚀  Em construção...  🚧
 </h4>
 
-### Funcionalidades (Ainda em Desenvolvimento):
+### Integração com Banco de Dados (Ainda em Desenvolvimento)
+
+Atualmente, estamos em processo de integração com um banco de dados para armazenar e recuperar dados de forma persistente. Essa adição proporcionará uma base sólida para recursos futuros e aprimorará a experiência do usuário.
+
+### Funcionalidades:
 
 - Integração com Banco de Dados MongoDB
 - Implementação de Endpoints da API
