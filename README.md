@@ -52,4 +52,4 @@ O backend da Plataforma Gamificada de Aprendizagem é crucial para fornecer os s
 - Integração com Banco de Dados MongoDB
 - Implementação de Endpoints da API
 - Middleware de Autenticação
-- Gerenciamento de Usuários e Perfis
+
