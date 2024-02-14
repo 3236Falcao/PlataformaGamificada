@@ -25,11 +25,15 @@ const usuarioSchema = new Schema<UsuarioDoc>({
 });
 
 // Definir o modelo do usuário com tratamento de erro
-let Usuario : Model<UsuarioDoc> | undefined;;
+let Usuario: Model<UsuarioDoc> | undefined;
+
 try {
+  // Tente definir o modelo do usuário
   Usuario = mongoose.model<UsuarioDoc>('Usuario', usuarioSchema);
 } catch (error) {
+  // Se houver um erro, registre-o no console
   console.error('Erro ao definir o modelo do usuário:', error);
 }
 
+// Exporte o modelo do usuário
 export default Usuario;

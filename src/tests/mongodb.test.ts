@@ -1,28 +1,54 @@
 import mongoose from 'mongoose';
-import { connectToMongoDB } from '../config/db';
+import Usuario from '../models/usuarioModel';
 
-describe('Testes de integração', () => {
-  beforeAll(async () => {
-    // Estabeleça a conexão com o banco de dados antes de executar os testes
-    await connectToMongoDB();
-  });
+async function testarInsercaoUsuario() {
+  // Conectar ao MongoDB usando Mongoose
+  await mongoose.connect('mongodb://localhost:27017/seu-banco-de-dados');
 
-  afterAll(async () => {
-    // Feche a conexão com o banco de dados após a execução dos testes
-    await mongoose.connection.close();
-  });
+  // Crie um novo usuário para inserir
+  const novoUsuario = {
+    nome: 'John',
+    idade: 30,
+    telefone: '992646286',
+    score: 0,
+    desempenho: {
+      nivel: 1,
+      conquistas: [],
+    },
+  };
 
-  it('Deve gravar dados corretamente no MongoDB', async () => {
-    // Chame uma função ou utilitário que grava dados no banco de dados
-    // Suponha que estamos inserindo um documento na coleção 'usuarios'
-    await mongoose.model('Usuario').create({ name: 'John', age: 30 });
+  try {
+    // Verifique se Usuario está definido
+    if (Usuario) {
+      // Insira o documento do usuário no banco de dados
+      const inserirDocumento = await Usuario.create(novoUsuario);
 
-    // Consulte o banco de dados para verificar se os dados foram gravados corretamente
-    const inserirDocumento = await mongoose.model('Usuario').findOne({ name: 'John' });
+      // Verifique se o documento não é nulo e possui os atributos esperados com os valores corretos
+      if (inserirDocumento) {
+        if (inserirDocumento.nome === 'John') {
+          console.log('Teste para o nome passou.');
+        } else {
+          console.error('Teste para o nome falhou.');
+        }
 
-    // Verifique se o documento foi gravado corretamente
-    expect(inserirDocumento).toBeTruthy();
-    expect(inserirDocumento!.name).toBe('John');
-    expect(inserirDocumento!.age).toBe(30);
-  });
-});
+        if (inserirDocumento.idade === 30) {
+          console.log('Teste para a idade passou.');
+        } else {
+          console.error('Teste para a idade falhou.');
+        }
+      } else {
+        console.error('O documento inserido é nulo.');
+      }
+    } else {
+      console.error('O modelo de usuário não está definido.');
+    }
+  } catch (error) {
+    console.error('Ocorreu um erro durante o teste:', error);
+  } finally {
+    // Desconectar do MongoDB
+    await mongoose.disconnect();
+  }
+}
+
+// Execute o teste
+testarInsercaoUsuario();

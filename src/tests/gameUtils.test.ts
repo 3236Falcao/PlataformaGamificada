@@ -23,7 +23,7 @@ test('calcula a pontuação quando o jogador tem múltiplas conquistas', () => {
 
 // Test Case 4
 test('calcula a pontuação quando o jogador não tem conquistas', () => {
-  const achievements: string[] = [];
+  const achievements: string[] = ['levelUp', 'questCompleted'];
   const score = calcularPontuacao(achievements);
   expect(score).toBe(0);
 });
