@@ -1,4 +1,4 @@
-import { calcularPontuacao  } from '../app/gameUtils';
+import { calcularPontuacao  } from '../app/utils/scoreUtils';
 
 // Test Case 1
 test('calcula a pontuação quando o jogador sobe de nível', () => {

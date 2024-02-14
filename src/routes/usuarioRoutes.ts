@@ -1,11 +1,11 @@
 import express from 'express';
 import {
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser
-} from '../controllers/userController';
+  todosUsuarios,
+  IdUsuario,
+  criarUsuario,
+  atualizarUsuario,
+  deletarUsuario
+} from '../controllers/usuarioController';
 
 const router = express.Router();
 
@@ -15,18 +15,18 @@ router.get('/', (_req: any, res: { send: (arg0: string) => void; }) => {
 });
 
 // Rota para obter todos os usuários
-router.get('/users', getAllUsers);
+router.get('/usuarios', todosUsuarios);
 
 // Rota para obter um usuário pelo ID
-router.get('/users/:id', getUserById);
+router.get('/usuarios/:id', IdUsuario);
 
 // Rota para criar um novo usuário
-router.post('/users', createUser);
+router.post('/usuarios', criarUsuario);
 
 // Rota para atualizar um usuário pelo ID
-router.put('/users/:id', updateUser);
+router.put('/usuarios/:id', atualizarUsuario);
 
 // Rota para excluir um usuário pelo ID
-router.delete('/users/:id', deleteUser);
+router.delete('/usuarios/:id', deletarUsuario);
 
 export default router;

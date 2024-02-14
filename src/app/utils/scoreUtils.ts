@@ -13,4 +13,3 @@ export function calcularPontuacao(conquistas: string[]): number {
   
     return score;
   }
-  

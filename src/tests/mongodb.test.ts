@@ -1,29 +1,28 @@
-import { connectToMongoDB } from './mongodb'; // Importe a função de conexão com o MongoDB
+import mongoose from 'mongoose';
+import { connectToMongoDB } from '../config/db';
 
 describe('Testes de integração', () => {
-  let client: MongoClient;
-
   beforeAll(async () => {
     // Estabeleça a conexão com o banco de dados antes de executar os testes
-    client = await connectToMongoDB();
+    await connectToMongoDB();
   });
 
   afterAll(async () => {
     // Feche a conexão com o banco de dados após a execução dos testes
-    await client.close();
+    await mongoose.connection.close();
   });
 
   it('Deve gravar dados corretamente no MongoDB', async () => {
     // Chame uma função ou utilitário que grava dados no banco de dados
-    // Suponha que estamos inserindo um documento na coleção 'users'
-    await client.db().collection('users').insertOne({ name: 'John', age: 30 });
+    // Suponha que estamos inserindo um documento na coleção 'usuarios'
+    await mongoose.model('Usuario').create({ name: 'John', age: 30 });
 
     // Consulte o banco de dados para verificar se os dados foram gravados corretamente
-    const insertedDocument = await client.db().collection('users').findOne({ name: 'John' });
+    const inserirDocumento = await mongoose.model('Usuario').findOne({ name: 'John' });
 
     // Verifique se o documento foi gravado corretamente
-    expect(insertedDocument).toBeTruthy();
-    expect(insertedDocument.name).toBe('John');
-    expect(insertedDocument.age).toBe(30);
+    expect(inserirDocumento).toBeTruthy();
+    expect(inserirDocumento!.name).toBe('John');
+    expect(inserirDocumento!.age).toBe(30);
   });
 });

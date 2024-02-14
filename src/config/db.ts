@@ -1,28 +1,21 @@
-import mongoose, { ConnectOptions } from 'mongoose';
+//import { MongoClient } from 'mongodb'; // Para conexao com o Atlas
+import mongoose from 'mongoose';
 
-const username = 'adm';
-const password = 'Mzyxcqpf60rp2NMT';
-const cluster = 'PlataformaGamificada';
-const provider= 'AWS';
-const database = 'PlataformaGamificada';
+const localURI = 'mongodb://localhost:27017/PlataformaGamificadaLocal';
+//const atlasURI = '';
 
-const url = `mongodb+srv://<username>:<password>@<cluster>.<provider>.mongodb.net/<database>`;
-
-
-// Função assíncrona para conectar ao MongoDB
-export async function connectToMongoDB(): Promise<void> {
+export   async function connectToMongoDB(): Promise<void> {
   try {
-    // Conecta ao MongoDB 
-    await mongoose.connect(url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }as any);
+    //const client = new MongoClient(localURI);
+
+    //await client.connect();
+    await mongoose.connect(localURI);
     
-    // Exibe mensagem de sucesso ao conectar
-    console.log('Conectado ao MongoDB Atlas!');
-  } catch (err) {
-    // Em caso de erro, exibe mensagem de erro e lança uma exceção
-    console.error('Erro de conexão com o MongoDB Atlas:', err);
-    throw err; // Trate o erro de acordo com suas necessidades
+    console.log('Conexão bem-sucedida com o banco de dados MongoDB');
+
+    //return client;
+  } catch (error) {
+    console.error('Erro ao conectar ao MongoDB:', error);
+    throw error;
   }
 }
