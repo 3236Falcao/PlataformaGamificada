@@ -3,7 +3,7 @@ import Usuario from '../models/usuarioModel';
 
 async function testarInsercaoUsuario() {
   // Conectar ao MongoDB usando Mongoose
-  await mongoose.connect('mongodb://localhost:27017/seu-banco-de-dados');
+  await mongoose.connect('mongodb://localhost:27017/PlataformaGamificadaLocal');
 
   // Crie um novo usuário para inserir
   const novoUsuario = {
