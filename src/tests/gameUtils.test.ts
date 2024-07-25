@@ -1,4 +1,4 @@
-import { calcularPontuacao  } from '../app/utils/scoreUtils';
+import { calcularPontuacao } from '../app/utils/scoreUtils';
 
 // Test Case 1
 test('calcula a pontuação quando o jogador sobe de nível', () => {
@@ -23,9 +23,7 @@ test('calcula a pontuação quando o jogador tem múltiplas conquistas', () => {
 
 // Test Case 4
 test('calcula a pontuação quando o jogador não tem conquistas', () => {
-  const achievements: string[] = ['levelUp', 'questCompleted'];
+  const achievements: string[] = [];
   const score = calcularPontuacao(achievements);
   expect(score).toBe(0);
 });
-
-
