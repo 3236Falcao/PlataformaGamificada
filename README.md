@@ -37,11 +37,111 @@ A arquitetura do backend é organizada seguindo os princípios de separação de
 - **Middlewares**: Interceptam solicitações HTTP antes de serem manipuladas pelos controllers, permitindo a execução de tarefas comuns, como autenticação, validação de entrada, etc.
 - **Modelos**: Definem a estrutura dos dados e interagem diretamente com o banco de dados.
 
+## Estrutura do Projeto
+
+```
+PLATAFORMAGAMIFICADA/
+├── src/
+│   ├── app/
+│   │   └── index.ts
+│   ├── config/
+│   │   └── db.ts
+│   ├── controllers/
+│   │   └── usuarioController.ts
+│   ├── models/
+│   │   ├── usuarioModel.js
+│   │   └── usuarioModel.ts
+│   ├── routes/
+│   │   └── usuarioRoutes.ts
+│   ├── tests/
+│   │   ├── gameUtils.test.ts
+│   │   └── mongodb.test.ts
+├── .gitignore
+├── jest.config.js
+├── LICENSE
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig-node.json
+└── tsconfig.json
+```
+
+## Requisitos
+
+- Node.js >= 14.0.0
+- npm >= 6.0.0
+
+## Instalação
+
+Para rodar este projeto, siga os passos abaixo:
+
+1. Clone o repositório:
+    ```sh
+    git clone https://github.com/seuusuario/PLATAFORMAGAMIFICADA.git
+    ```
+2. Navegue até o diretório do projeto:
+    ```sh
+    cd PLATAFORMAGAMIFICADA
+    ```
+3. Instale as dependências:
+    ```sh
+    npm install
+    ```
+
+## Configuração
+
+Configure as variáveis de ambiente no arquivo `.env`:
+
+```sh
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=sua_senha
+```
+
+## Uso
+
+Para iniciar o servidor, execute o seguinte comando:
+```sh
+npm start
+```
+
+## Exemplos de Uso
+
+### Criar um Novo Usuário
+
+```sh
+POST /api/usuarios
+Content-Type: application/json
+
+{
+    "nome": "João Silva",
+    "email": "joao.silva@example.com",
+    "senha": "senha123"
+}
+```
+
+### Obter Detalhes do Usuário
+
+```sh
+GET /api/usuarios/{id}
+```
+
+## Testes
+
+Para rodar os testes, use o comando:
+```sh
+npm test
+```
+
+## Configuração do Banco de Dados
+
+As configurações do banco de dados estão localizadas em `src/config/db.ts`. Certifique-se de configurar as variáveis de ambiente corretamente para conectar ao seu banco de dados.
+
 <h4 align="center"> 
 	 Conclusão
 </h4>
 
-O backend da Plataforma Gamificada de Aprendizagem é crucial para fornecer os serviços necessários para a interação entre o cliente e o servidor, para isso usamos tecnologias como Node.js e Express.
+O backend da Plataforma Gamificada de Aprendizagem é crucial para fornecer os serviços necessários para a interação entre o cliente e o servidor. Utilizamos tecnologias como Node.js e Express para garantir eficiência e escalabilidade.
 
 <h4 align="center"> 
 	🚧   🚀  Em construção...  🚧
@@ -52,4 +152,13 @@ O backend da Plataforma Gamificada de Aprendizagem é crucial para fornecer os s
 - Integração com Banco de Dados MongoDB
 - Implementação de Endpoints da API
 - Middleware de Autenticação
+
+## Contribuição
+
+Sinta-se à vontade para fazer um fork deste projeto e abrir pull requests. Para grandes mudanças, por favor, abra uma issue primeiro para discutir o que você gostaria de mudar.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
 
